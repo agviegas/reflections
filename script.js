@@ -1,5 +1,6 @@
 // Article metadata storage
 const articles = [];
+let filteredArticles = [];
 
 // Load article index on main page
 async function loadArticleIndex() {
@@ -7,29 +8,79 @@ async function loadArticleIndex() {
         const response = await fetch('articles/index.json');
         const articleList = await response.json();
         
+        articles.length = 0;
         articles.push(...articleList);
         
-        const articleListElement = document.getElementById('article-list');
-        
-        if (articles.length === 0) {
-            articleListElement.innerHTML = '<p>No articles yet.</p>';
-            return;
-        }
+        // Load content for all articles
+        await loadArticleContents();
         
         // Sort articles by date (newest first)
         articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+        filteredArticles = [...articles];
         
-        articleListElement.innerHTML = articles.map(article => `
-            <div class="article-item">
-                <h2><a href="article.html?id=${article.id}">${escapeHtml(article.title)}</a></h2>
-                <div class="date">${formatDate(article.date)}</div>
-                ${article.excerpt ? `<div class="excerpt">${escapeHtml(article.excerpt)}</div>` : ''}
-            </div>
-        `).join('');
+        renderArticles();
+        
+        // Set up search functionality
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', handleSearch);
     } catch (error) {
         console.error('Error loading article index:', error);
         document.getElementById('article-list').innerHTML = '<p>Error loading articles.</p>';
     }
+}
+
+// Load markdown content for all articles
+async function loadArticleContents() {
+    const contentPromises = articles.map(async (article) => {
+        try {
+            const mdResponse = await fetch(`articles/${article.id}.md`);
+            const content = await mdResponse.text();
+            article.content = content.toLowerCase(); // Store lowercase for case-insensitive search
+            return article;
+        } catch (error) {
+            console.error(`Error loading content for article ${article.id}:`, error);
+            article.content = ''; // Set empty content if fetch fails
+            return article;
+        }
+    });
+    
+    await Promise.all(contentPromises);
+}
+
+// Render articles to the page
+function renderArticles() {
+    const articleListElement = document.getElementById('article-list');
+    
+    if (filteredArticles.length === 0) {
+        articleListElement.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #666666; padding: 40px 0;">No articles found.</p>';
+        return;
+    }
+    
+    articleListElement.innerHTML = filteredArticles.map(article => `
+        <div class="article-item">
+            <h2><a href="article.html?id=${article.id}">${escapeHtml(article.title)}</a></h2>
+            <div class="date">${formatDate(article.date)}</div>
+            ${article.excerpt ? `<div class="excerpt">${escapeHtml(article.excerpt)}</div>` : ''}
+        </div>
+    `).join('');
+}
+
+// Handle search input
+function handleSearch(event) {
+    const searchTerm = event.target.value.toLowerCase().trim();
+    
+    if (searchTerm === '') {
+        filteredArticles = [...articles];
+    } else {
+        filteredArticles = articles.filter(article => {
+            const titleMatch = article.title.toLowerCase().includes(searchTerm);
+            const excerptMatch = article.excerpt && article.excerpt.toLowerCase().includes(searchTerm);
+            const contentMatch = article.content && article.content.includes(searchTerm);
+            return titleMatch || excerptMatch || contentMatch;
+        });
+    }
+    
+    renderArticles();
 }
 
 // Load individual article
