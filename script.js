@@ -57,11 +57,11 @@ function renderArticles() {
     }
     
     articleListElement.innerHTML = filteredArticles.map(article => `
-        <div class="article-item">
-            <h2><a href="article.html?id=${article.id}">${escapeHtml(article.title)}</a></h2>
+        <a href="article.html?id=${article.id}" class="article-item">
+            <h2>${escapeHtml(article.title)}</h2>
             <div class="date">${formatDate(article.date)}</div>
             ${article.excerpt ? `<div class="excerpt">${escapeHtml(article.excerpt)}</div>` : ''}
-        </div>
+        </a>
     `).join('');
 }
 

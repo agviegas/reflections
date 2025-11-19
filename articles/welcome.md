@@ -1,4 +1,3 @@
-# Welcome
 
 This is a simple, minimalistic platform for writing and sharing articles.
 

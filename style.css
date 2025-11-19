@@ -50,6 +50,10 @@ header {
     border-bottom: 1px solid var(--border-color);
 }
 
+body.article-page header {
+    margin-bottom: 20px;
+}
+
 .header-top {
     display: flex;
     justify-content: space-between;
@@ -146,10 +150,18 @@ main {
     display: flex;
     flex-direction: column;
     background-color: var(--bg-color);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .article-item:hover {
     border-color: var(--border-hover);
+}
+
+.article-item a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .article-item.hidden {
@@ -188,7 +200,7 @@ main {
 }
 
 article {
-    padding: 20px 0;
+    padding-bottom: 20px;
 }
 
 article .date {
