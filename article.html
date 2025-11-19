@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="article-title">Article</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const storedTheme = localStorage.getItem('theme');
+            const systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            const theme = storedTheme || systemTheme;
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
         <header>
-            <nav>
-                <a href="index.html">← Back to Articles</a>
-            </nav>
+            <div class="header-top">
+                <nav>
+                    <a href="index.html">← Back to Articles</a>
+                </nav>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
         </header>
         <main>
             <article id="article-content">

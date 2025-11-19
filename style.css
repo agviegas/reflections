@@ -1,3 +1,29 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #666666;
+    --text-placeholder: #999999;
+    --border-color: #e0e0e0;
+    --border-hover: #000000;
+    --heading-color: #000000;
+    --code-bg: #f5f5f5;
+    --blockquote-border: #cccccc;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-muted: #999999;
+    --text-placeholder: #666666;
+    --border-color: #333333;
+    --border-hover: #ffffff;
+    --heading-color: #ffffff;
+    --code-bg: #2a2a2a;
+    --blockquote-border: #555555;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,9 +33,10 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     line-height: 1.6;
-    color: #1a1a1a;
-    background-color: #ffffff;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -20,14 +47,46 @@ body {
 header {
     margin-bottom: 40px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 header h1 {
     font-size: 2em;
     font-weight: 400;
-    color: #000000;
-    margin-bottom: 20px;
+    color: var(--heading-color);
+    margin: 0;
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 4px;
+    transition: border-color 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.theme-toggle:hover {
+    border-color: var(--border-hover);
+    background-color: var(--code-bg);
+}
+
+.theme-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
 .search-container {
@@ -38,20 +97,20 @@ header h1 {
     width: 100%;
     padding: 12px 15px;
     font-size: 1em;
-    border: 1px solid #e0e0e0;
-    background-color: #ffffff;
-    color: #1a1a1a;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: inherit;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
 }
 
 #search-input:focus {
-    border-color: #000000;
+    border-color: var(--border-hover);
 }
 
 #search-input::placeholder {
-    color: #999999;
+    color: var(--text-placeholder);
 }
 
 header nav {
@@ -59,13 +118,14 @@ header nav {
 }
 
 header nav a {
-    color: #666666;
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 0.9em;
+    transition: color 0.2s;
 }
 
 header nav a:hover {
-    color: #000000;
+    color: var(--heading-color);
 }
 
 main {
@@ -81,14 +141,15 @@ main {
 
 .article-item {
     padding: 20px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-color);
     transition: border-color 0.2s;
     display: flex;
     flex-direction: column;
+    background-color: var(--bg-color);
 }
 
 .article-item:hover {
-    border-color: #000000;
+    border-color: var(--border-hover);
 }
 
 .article-item.hidden {
@@ -103,8 +164,9 @@ main {
 }
 
 .article-item h2 a {
-    color: #000000;
+    color: var(--heading-color);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 .article-item h2 a:hover {
@@ -112,13 +174,13 @@ main {
 }
 
 .article-item .date {
-    color: #666666;
+    color: var(--text-muted);
     font-size: 0.9em;
     margin-bottom: 10px;
 }
 
 .article-item .excerpt {
-    color: #4a4a4a;
+    color: var(--text-secondary);
     font-size: 0.9em;
     margin-top: auto;
     padding-top: 10px;
@@ -129,11 +191,15 @@ article {
     padding: 20px 0;
 }
 
+article .date {
+    color: var(--text-muted);
+}
+
 article h1 {
     font-size: 2em;
     font-weight: 400;
     margin-bottom: 20px;
-    color: #000000;
+    color: var(--heading-color);
 }
 
 article h2 {
@@ -141,7 +207,7 @@ article h2 {
     font-weight: 400;
     margin-top: 30px;
     margin-bottom: 15px;
-    color: #000000;
+    color: var(--heading-color);
 }
 
 article h3 {
@@ -149,18 +215,18 @@ article h3 {
     font-weight: 400;
     margin-top: 25px;
     margin-bottom: 12px;
-    color: #000000;
+    color: var(--heading-color);
 }
 
 article p {
     margin-bottom: 16px;
-    color: #1a1a1a;
+    color: var(--text-color);
 }
 
 article ul, article ol {
     margin-bottom: 16px;
     padding-left: 30px;
-    color: #1a1a1a;
+    color: var(--text-color);
 }
 
 article li {
@@ -168,16 +234,16 @@ article li {
 }
 
 article code {
-    background-color: #f5f5f5;
+    background-color: var(--code-bg);
     padding: 2px 6px;
     border-radius: 3px;
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
-    color: #000000;
+    color: var(--heading-color);
 }
 
 article pre {
-    background-color: #f5f5f5;
+    background-color: var(--code-bg);
     padding: 15px;
     border-radius: 3px;
     overflow-x: auto;
@@ -190,20 +256,21 @@ article pre code {
 }
 
 article blockquote {
-    border-left: 3px solid #cccccc;
+    border-left: 3px solid var(--blockquote-border);
     padding-left: 20px;
     margin: 20px 0;
-    color: #4a4a4a;
+    color: var(--text-secondary);
     font-style: italic;
 }
 
 article a {
-    color: #000000;
+    color: var(--heading-color);
     text-decoration: underline;
+    transition: color 0.2s;
 }
 
 article a:hover {
-    color: #666666;
+    color: var(--text-muted);
 }
 
 article img {
@@ -214,13 +281,13 @@ article img {
 
 article hr {
     border: none;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--border-color);
     margin: 30px 0;
 }
 
 article strong {
     font-weight: 600;
-    color: #000000;
+    color: var(--heading-color);
 }
 
 article em {
@@ -230,9 +297,9 @@ article em {
 footer {
     margin-top: 60px;
     padding-top: 20px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--border-color);
     text-align: center;
-    color: #666666;
+    color: var(--text-muted);
     font-size: 0.9em;
 }
 

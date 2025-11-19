@@ -52,7 +52,7 @@ function renderArticles() {
     const articleListElement = document.getElementById('article-list');
     
     if (filteredArticles.length === 0) {
-        articleListElement.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #666666; padding: 40px 0;">No articles found.</p>';
+        articleListElement.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px 0;">No articles found.</p>';
         return;
     }
     
@@ -119,7 +119,7 @@ async function loadArticle() {
         const articleElement = document.getElementById('article-content');
         articleElement.innerHTML = `
             <h1>${escapeHtml(article.title)}</h1>
-            <div class="date" style="margin-bottom: 30px; color: #666666;">${formatDate(article.date)}</div>
+            <div class="date" style="margin-bottom: 30px;">${formatDate(article.date)}</div>
             ${html}
         `;
     } catch (error) {
@@ -127,6 +127,71 @@ async function loadArticle() {
         document.getElementById('article-content').innerHTML = '<p>Error loading article.</p>';
     }
 }
+
+// Theme management
+function getSystemTheme() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function getStoredTheme() {
+    return localStorage.getItem('theme');
+}
+
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateThemeIcon(theme);
+}
+
+function updateThemeIcon(theme) {
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+}
+
+function initTheme() {
+    const storedTheme = getStoredTheme();
+    const systemTheme = getSystemTheme();
+    
+    // Use stored theme if available, otherwise use system preference
+    const theme = storedTheme || systemTheme;
+    setTheme(theme);
+    
+    // Listen for system theme changes if no stored preference
+    if (!storedTheme && window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        mediaQuery.addEventListener('change', (e) => {
+            if (!getStoredTheme()) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    }
+}
+
+// Initialize theme immediately to prevent flash
+(function() {
+    const storedTheme = getStoredTheme();
+    const systemTheme = getSystemTheme();
+    const theme = storedTheme || systemTheme;
+    document.documentElement.setAttribute('data-theme', theme);
+})();
+
+// Set up theme toggle button and complete initialization after DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+});
 
 // Utility functions
 function escapeHtml(text) {
