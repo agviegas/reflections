@@ -1,19 +1,21 @@
-Imagine you’re ten years old again. Your biggest worry is that your sandwich doesn’t touch the banana inside your backpack. And one fine day, when you open the mailbox, there’s a letter sealed with wax addressed to you. It comes with good news and bad news.
+Imagine being ten again. Your biggest worry is that your sandwich doesn't end up mashed against the banana in your backpack. Then one day, you open the mailbox and there it is: a wax-sealed letter with your name on it. Good news and bad news.
 
-The good news is that **Hogwarts is real**, and it wants you as a student. Yes, you. Years of magic await you in an impossible castle, with hallways that change places and forests brimming with endless secrets.
+Good news first: **Hogwarts is real**, and they want you. Yes, you. Years of magic in an impossible castle, moving hallways and forests full of secrets.
 
-The bad news is… well, wands are illegal. Completely forbidden, especially for kids. They’re considered far too dangerous. And honestly, maybe they have a point: an entire school full of teenagers with access to weapons capable of vaporizing half a classroom? But don’t worry, they say. Even without a wand, you’re going to learn magic anyway.
+Bad news: **wands are banned**. Completely. Especially for kids. Too dangerous, they say. And honestly, fair enough. A building full of teenagers with the power to blow a hole through a classroom? But don't worry, they say, **you'll learn magic anyway**.
 
-Your first day of class arrives. They sit you down, hand you a blank parchment, and the teacher begins reciting spells you can’t see, can’t use, can’t even imagine. But he insists they’re fundamental, that they “furnish the mind,” and—most importantly—that they’re on the exam. So you take notes.
+So day one arrives. They sit you down, hand you a blank sheet, and the professor starts mumbling spells you can't see, can't use, can't even visualize. But they're _important_, they _build character_, and, naturally, _they're on the test_. So you take notes dutifully.
 
-The years go by. And eventually, the magic becomes so theoretical, so distant from anything you can touch, that it stops being magic at all. It’s just noise—formulas you memorize without understanding. There’s always that one classmate who actually loves this stuff, the premium geek who would solve integrals at the beach, but you’re not them.
+Years go by. And the magic fades into pure abstraction. It's not magic anymore; it's noise. Formulas without meaning. There's always that one kid who genuinely loves this stuff (the kind who'd happily solve equations on vacation). But that kid isn't you.
 
-My story with math went the same way. Even though I studied science, it was the subject that inspired me the least. I couldn’t see anything. I couldn’t understand anything. And worst of all: it wasn’t useful for anything in front of me. But life, which sometimes has a pretty twisted sense of humor, led me to 3D programming. And that’s where I found the magic.
+That was my relationship with math. I studied science, but math was the class I dreaded most. Nothing clicked. Nothing felt real. Nothing mattered. And then life, with its usual sense of irony, shoved me straight into 3D programming. And suddenly there was the magic.
 
-Because it turns out vectors, matrices, and quaternions stopped being mysterious words and became my tools for building mountains, moving lights, and creating worlds. It felt like I’d been handed my first wand. And a good one, too—dragon-core, none of that second-hand stuff.
+Vectors, matrices, quaternions… all the stuff that once felt like dark incantations turned into actual tools. Tools to build mountains, move lights, create worlds. It was like someone finally handed me a wand worthy of a dragon-core. No toy store knockoff.
 
-I use math every day. I like it the same way a carpenter likes their hammer. I’m not passionate about it, but it lets me create things I am passionate about.
+I use math every day now. I don't adore it any more than a carpenter adores a hammer. But like a hammer, it lets me build the things I do love.
 
-So maybe the problem isn’t that math is boring. Maybe it’s that we teach it as if Hogwarts were a wandless academy. All theory, no magic. And of course, no one falls in love that way.
+So maybe math isn't the problem. Maybe the problem is we teach it like Hogwarts with no wands. All theory. No magic. And then we're shocked that no one falls in love with it.
 
-In 2025, with calculators, computers, and graphic engines that can build you a 3D forest while you have a snack, maybe it no longer makes sense to ask students to do fifty matrix multiplications by hand. Maybe it’s more interesting for them to make a video game, a simulation, or a neural network. Something that shines, that moves, that matters to them. Call me crazy, but I’m all for teaching with wands.
+It's 2025. Calculators, computers, graphics engines—they can conjure a 3D forest before you finish your snack. Maybe forcing students to grind through fifty matrix multiplications by hand isn't the badge of honor we pretend it is. Maybe it's more useful—and more inspiring—to have them build a game, a simulation, a neural network. Something alive. Something that matters.
+
+Call me crazy, but I'm all in on teaching with wands.
